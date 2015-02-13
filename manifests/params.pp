@@ -4,14 +4,13 @@
 # It sets variables according to platform
 #
 class phpipam::params {
+  $package_source = 'http://downloads.sourceforge.net/project/phpipam/phpipam-1.1.010.tar?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fphpipam%2Ffiles%2F%3Fsource%3Dnavbar&ts=1423856172&use_mirror=iweb'
+
   case $::osfamily {
-    'Debian': {
-      $package_name = 'phpipam'
-      $service_name = 'phpipam'
-    }
     'RedHat', 'Amazon': {
-      $package_name = 'phpipam'
-      $service_name = 'phpipam'
+      $apache_docroot = '/var/www/html'
+      $apache_user = 'apache'
+      $apache_group = 'apache'
     }
     default: {
       fail("${::operatingsystem} not supported")

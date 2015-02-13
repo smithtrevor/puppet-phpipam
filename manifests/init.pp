@@ -8,12 +8,18 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class phpipam (
-  $package_name = $phpipam::params::package_name,
-  $service_name = $phpipam::params::service_name,
+  $apache_docroot = $::phpipam::params::apache_docroot,
+  $apache_user    = $::phpipam::params::apache_user,
+  $apache_group   = $::phpipam::params::apache_group,
+  $package_source = $::phpipam::params::package_source,
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
   # validate parameters here
+  validate_absolute_path($apache_docroot)
+  validate_string($apache_user,
+                  $apache_group
+  )
 
   class { 'phpipam::install': } ->
   class { 'phpipam::config': } ~>
