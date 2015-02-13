@@ -10,12 +10,12 @@ class phpipam::install {
     group => 'puppet',
   }
 
-  staging::file { 'phpipam_tar':
+  staging::file { 'phpipam.tar':
     source  => $::phpipam::package_source,
     require => File[$::phpipam::apache_docroot],
   }
 
-  staging::extract { 'phpipam_docroot':
+  staging::extract { 'phpipam.tar':
     target  => $::phpipam::apache_docroot,
     creates => "${::phpipam::apache_docroot}/phpipam",
     require => Staging::File['phpipam_tar'],
