@@ -2,7 +2,7 @@
 #
 class phpipam::install {
 
-  $phpipam::install::phpipam_docroot = "${::phpipam::apache_docroot}/phpipam"
+  $phpipam_docroot = "${::phpipam::apache_docroot}/phpipam"
 
   class { 'staging':
     path  => '/tmp',
