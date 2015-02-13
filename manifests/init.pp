@@ -12,10 +12,16 @@ class phpipam (
   $service_name = $phpipam::params::service_name,
 ) inherits phpipam::params {
 
+  if $::osfamily == 'Redhat' {
   # validate parameters here
 
   class { 'phpipam::install': } ->
   class { 'phpipam::config': } ~>
   class { 'phpipam::service': } ->
   Class['phpipam']
+
+  }
+  else {
+    fail("${::osfamily} not supported")
+  }
 }
