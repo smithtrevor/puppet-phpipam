@@ -18,7 +18,7 @@ class phpipam::install {
   staging::extract { 'phpipam.tar':
     target  => $::phpipam::apache_docroot,
     creates => "${::phpipam::apache_docroot}/phpipam",
-    require => Staging::File['phpipam_tar'],
+    require => Staging::File['phpipam.tar'],
   }
 
   file { $::phpipam::apache_docroot:
