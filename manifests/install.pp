@@ -7,11 +7,6 @@ class phpipam::install {
   if $::phpipam::manage_apache {
 
     contain phpipam::install::apache
-
-    group { $::phpipam::apache_group:
-      ensure => present,
-    }
-
   }
 
   class { 'staging':
