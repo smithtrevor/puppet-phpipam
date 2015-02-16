@@ -14,7 +14,11 @@ class phpipam::install::apache {
     vhost_dir              => '/etc/httpd/vhosts.d',
   }
 
-  class { '::apache::mod::prefork': }
+  class { '::apache::mod::prefork': } ->
   class { '::apache::mod::php': }
+
+  package { 'php-pear':
+    ensure => present,
+  }
 
 }
