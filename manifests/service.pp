@@ -5,10 +5,5 @@
 #
 class phpipam::service {
 
-  service { $phpipam::service_name:
-    ensure     => running,
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-  }
+
 }
