@@ -8,11 +8,14 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class phpipam (
-  $apache_docroot = $::phpipam::params::apache_docroot,
-  $apache_user    = $::phpipam::params::apache_user,
-  $apache_group   = $::phpipam::params::apache_group,
-  $package_source = $::phpipam::params::package_source,
-  $manage_apache  = true,
+  $apache_docroot     = $::phpipam::params::apache_docroot,
+  $apache_user        = $::phpipam::params::apache_user,
+  $apache_group       = $::phpipam::params::apache_group,
+  $package_source     = $::phpipam::params::package_source,
+  $manage_apache      = true,
+  $apache_server_root = $::phpipam::params::apache_server_root,
+  $apache_serveradmin = $::phpipam::params::apache_serveradmin,
+
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
