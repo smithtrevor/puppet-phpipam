@@ -5,15 +5,17 @@ class phpipam::install {
   $phpipam_docroot = "${::phpipam::apache_docroot}/phpipam"
   
   if $::phpipam::manage_apache {
-
     contain phpipam::install::apache
+  }
+
+  if $::phpipam::manage_mysql {
+    contain phpipam::install::mysql
   }
 
   if $::phpipam::manage_php {
     package { $::phpipam::params::php_packages:
       ensure => 'present',
     }
-
   }
 
   class { 'staging':

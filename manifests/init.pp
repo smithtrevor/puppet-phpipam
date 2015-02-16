@@ -14,6 +14,7 @@ class phpipam (
   $package_source     = $::phpipam::params::package_source,
   $manage_apache      = true,
   $manage_php         = true,
+  $manage_mysql       = true,
   $apache_server_root = $::phpipam::params::apache_server_root,
   $apache_serveradmin = $::phpipam::params::apache_serveradmin,
 
