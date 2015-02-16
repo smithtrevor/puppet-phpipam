@@ -16,6 +16,5 @@ class phpipam::install::apache {
 
   class { '::apache::mod::prefork': } ->
   class { '::apache::mod::php': }
-  class { '::apache::mod::rewrite': }
 
 }
