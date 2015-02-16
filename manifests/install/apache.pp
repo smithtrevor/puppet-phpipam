@@ -9,12 +9,12 @@ class phpipam::install::apache {
     keepalive              => 'Off',
     max_keepalive_requests => '500',
     keepalive_timeout      => '15',
-    mpm_module             => 'prefork',
+    mpm_module             => false,
     trace_enable           => 'Off',
     vhost_dir              => '/etc/httpd/vhosts.d',
   }
 
-  class { '::apache::mod::php': }
   class { '::apache::mod::prefork': }
+  class { '::apache::mod::php': }
 
 }
