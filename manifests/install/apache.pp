@@ -17,8 +17,4 @@ class phpipam::install::apache {
   class { '::apache::mod::prefork': } ->
   class { '::apache::mod::php': }
 
-  package { 'php-pear':
-    ensure => present,
-  }
-
 }
