@@ -14,4 +14,7 @@ class phpipam::install::apache {
     vhost_dir              => '/etc/httpd/vhosts.d',
   }
 
+  class { '::apache::mod::php': }
+  class { '::apache::mod::prefork': }
+
 }
