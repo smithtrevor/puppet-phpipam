@@ -9,6 +9,13 @@ class phpipam::install {
     contain phpipam::install::apache
   }
 
+  if $::phpipam::manage_php {
+    package { $::phpipam::params::php_packages:
+      ensure => 'present',
+    }
+
+  }
+
   class { 'staging':
     path  => '/tmp',
     owner => 'puppet',
