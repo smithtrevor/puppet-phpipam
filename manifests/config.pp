@@ -14,6 +14,7 @@ class phpipam::config {
       ip_based          => false,
       access_log_format => 'combined',
       docroot           => "${::phpipam::apache_docroot}/phpipam",
+      override          => ['All'],
     }
   }
 
