@@ -9,7 +9,7 @@ class phpipam::install::apache {
     keepalive              => 'Off',
     max_keepalive_requests => '500',
     keepalive_timeout      => '15',
-    mpm_module             => false,
+    mpm_module             => 'prefork',
     trace_enable           => 'Off',
     vhost_dir              => '/etc/httpd/vhosts.d',
   }
