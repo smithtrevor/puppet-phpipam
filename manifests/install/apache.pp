@@ -1,6 +1,6 @@
 class phpipam::install::apache {
   
-  class { 'apache':
+  class { '::apache':
     default_vhost         => false,
     server_tokens         => 'ProductOnly',
     server_signature      => 'Off',
