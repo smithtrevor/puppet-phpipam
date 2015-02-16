@@ -13,6 +13,12 @@ class phpipam::params {
       $apache_user = 'apache'
       $apache_group = 'apache'
       $apache_server_root = '/etc/httpd'
+      $php_packages = [   'php-pear',
+                          'php-pear-MDB2-Driver-mysqli',
+                          'php-cli',
+                          'php-mcrypt',
+                          'php-ldap'
+      ]
     }
     default: {
       fail("${::operatingsystem} not supported")
