@@ -29,6 +29,14 @@ class phpipam::install {
     require => Staging::File['phpipam.tar'],
   }
 
+  file { $::phpipam_docroot:
+    owner     => 'root',
+    group     => $::phpipam::apache_group,
+    mode      => '0640',
+    recurse   => true,
+    subscribe => Staging::Extract[ 'phpipam.tar'],
+  }
+
   file { $::phpipam::apache_docroot:
     ensure  => directory,
     owner   => 'root',
