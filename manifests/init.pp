@@ -17,7 +17,7 @@ class phpipam (
   $manage_mysql       = true,
   $apache_server_root = $::phpipam::params::apache_server_root,
   $apache_serveradmin = $::phpipam::params::apache_serveradmin,
-
+  $mysql_root_password = 'strongpassword',
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
