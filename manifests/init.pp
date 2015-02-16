@@ -8,16 +8,17 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class phpipam (
-  $apache_docroot     = $::phpipam::params::apache_docroot,
-  $apache_user        = $::phpipam::params::apache_user,
-  $apache_group       = $::phpipam::params::apache_group,
-  $package_source     = $::phpipam::params::package_source,
-  $manage_apache      = true,
-  $manage_php         = true,
-  $manage_mysql       = true,
-  $apache_server_root = $::phpipam::params::apache_server_root,
-  $apache_serveradmin = $::phpipam::params::apache_serveradmin,
-  $mysql_root_password = 'strongpassword',
+  $apache_docroot       = $::phpipam::params::apache_docroot,
+  $apache_user          = $::phpipam::params::apache_user,
+  $apache_group         = $::phpipam::params::apache_group,
+  $package_source       = $::phpipam::params::package_source,
+  $manage_apache        = true,
+  $manage_php           = true,
+  $manage_mysql         = true,
+  $apache_server_root   = $::phpipam::params::apache_server_root,
+  $apache_serveradmin   = $::phpipam::params::apache_serveradmin,
+  $mysql_root_password  = 'strongpassword',
+  $php_timezone         = $::timezone,
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
