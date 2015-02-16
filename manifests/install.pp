@@ -3,6 +3,14 @@
 class phpipam::install {
 
   $phpipam_docroot = "${::phpipam::apache_docroot}/phpipam"
+  
+  if $::phpipam::manage_apache {
+
+    group { $::phpipam::apache_group:
+      ensure => present,
+    }
+
+  }
 
   class { 'staging':
     path  => '/tmp',
@@ -22,10 +30,11 @@ class phpipam::install {
   }
 
   file { $::phpipam::apache_docroot:
-    ensure => directory,
-    owner  => 'root',
-    group  => $::phpipam::apache_group,
-    mode   => '0750',
+    ensure  => directory,
+    owner   => 'root',
+    group   => $::phpipam::apache_group,
+    mode    => '0750',
+    require => Group[$::phpipam::apache_group],
   }
 
 }

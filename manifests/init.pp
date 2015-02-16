@@ -12,6 +12,7 @@ class phpipam (
   $apache_user    = $::phpipam::params::apache_user,
   $apache_group   = $::phpipam::params::apache_group,
   $package_source = $::phpipam::params::package_source,
+  $manage_apache  = true,
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
