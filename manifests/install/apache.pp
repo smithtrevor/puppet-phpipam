@@ -1,0 +1,3 @@
+class phpipam::install::apache {
+
+}
