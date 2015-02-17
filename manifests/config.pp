@@ -16,6 +16,7 @@ class phpipam::config {
       docroot           => "${::phpipam::apache_docroot}/phpipam",
       override          => ['All'],
       options           => ['FollowSymLinks'],
+      ssl               => $::phpipam::ssl_enabled,
     }
   }
 
