@@ -10,7 +10,6 @@ class phpipam::config {
       ip                => '*',
       port              => '80',
       servername        => $::phipam::site_fqdn,
-      ssl               => false,
       ip_based          => false,
       access_log_format => 'combined',
       docroot           => "${::phpipam::apache_docroot}/phpipam",
