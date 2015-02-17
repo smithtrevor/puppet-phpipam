@@ -21,6 +21,7 @@ class phpipam (
   $php_timezone         = $::timezone,
   $site_fqdn            = $::fqdn,
   $ssl_enabled          = false,
+  $ssl_options          = {},
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
@@ -29,6 +30,7 @@ class phpipam (
   validate_string($apache_user,
                   $apache_group
   )
+  validate_hash($ssl_options)
 
   class { 'phpipam::install': } ->
   class { 'phpipam::config': } ~>
