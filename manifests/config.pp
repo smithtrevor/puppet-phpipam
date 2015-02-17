@@ -5,10 +5,17 @@
 class phpipam::config {
 
   if $::phpipam::manage_apache {
+
+    if $::phpipam::ssl_enabled {
+      $listen_port = 443
+    }
+    else {
+      $listen_port = 80
+    }
     
     apache::vhost { 'phpipam' :
       ip                => '*',
-      port              => '80',
+      port              => $::phpipam::config::listen_port,
       servername        => $::phipam::site_fqdn,
       ip_based          => false,
       access_log_format => 'combined',
