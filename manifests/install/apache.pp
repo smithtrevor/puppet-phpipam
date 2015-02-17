@@ -12,6 +12,7 @@ class phpipam::install::apache {
     mpm_module             => false,
     trace_enable           => 'Off',
     vhost_dir              => '/etc/httpd/vhosts.d',
+    ssl                    => $::phpipam::ssl_enabled,
   }
 
   class { '::apache::mod::prefork': } ->

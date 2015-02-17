@@ -20,6 +20,7 @@ class phpipam (
   $mysql_root_password  = 'strongpassword',
   $php_timezone         = $::timezone,
   $site_fqdn            = $::fqdn,
+  $ssl_enabled          = false,
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
