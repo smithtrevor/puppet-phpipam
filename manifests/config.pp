@@ -10,6 +10,63 @@ class phpipam::config {
       $listen_port = 443
 
       $ssl_config = deep_merge($::phpipam::params::ssl_params_hash, $::phpipam::ssl_options)
+
+      if $::phpipam::ssl_certificate {
+
+        validate_absolute_path($::phpipam::config::ssl_config['ssl_cert'])
+
+        file { $::phpipam::config::ssl_config['ssl_cert']:
+          ensure  => file,
+          owner   => 'root',
+          group   => $::phpipam::apache_group,
+          mode    => '0640',
+          content => $::phpipam::ssl_certificate,
+          notify  => Service[$::apache::params::service_name],
+        }
+      }
+
+      if $::phpipam::ssl_key {
+        
+        validate_absolute_path($::phpipam::config::ssl_config['ssl_key'])
+
+        file { $::phpipam::config::ssl_config['ssl_key']:
+          ensure  => file,
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0600',
+          content => $::phpipam::ssl_key,
+          notify  => Service[$::apache::params::service_name],
+        }
+      }
+
+      if $::phpipam::ssl_ca_certs {
+        
+        validate_absolute_path($::phpipam::config::ssl_config['ssl_ca'])
+        
+        file { $::phpipam::config::ssl_config['ssl_ca']:
+          ensure  => file,
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0444',
+          content => $::phpipam::ssl_ca_certs,
+          notify  => Service[$::apache::params::service_name],
+        }
+      }
+
+      if $::phpipam::ssl_chain_certs {
+
+        validate_absolute_path($::phpipam::config::ssl_config['ssl_chain'])
+
+        file { $::phpipam::config::ssl_config['ssl_chain']:
+          ensure  => file,
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0444',
+          content => $::phpipam::ssl_chain_certs,
+          notify  => Service[$::apache::params::service_name],
+        }
+      }
+
     }
     else {
       $listen_port = 80

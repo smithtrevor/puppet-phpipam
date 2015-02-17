@@ -20,6 +20,10 @@ class phpipam (
   $mysql_root_password  = 'strongpassword',
   $php_timezone         = $::timezone,
   $site_fqdn            = $::fqdn,
+  $ssl_certificate      = false,
+  $ssl_key              = false,
+  $ssl_ca_certs         = false,
+  $ssl_chain_certs      = false,
   $ssl_enabled          = false,
   $ssl_options          = {},
 ) inherits phpipam::params {
