@@ -115,9 +115,8 @@ class phpipam::config {
 
   cron { 'pingCheck.php':
     ensure  => present,
-    command => '/usr/local/bin/php /usr/local/www/phpipam/functions/scripts/pingCheck.php',
+    command => '/usr/bin/php /var/www/html/phpipam/functions/scripts/pingCheck.php',
     minute  => '*/15',
-    target  => '/etc/cron.d/phpipam',
     user    => 'apache',
   }
 }
