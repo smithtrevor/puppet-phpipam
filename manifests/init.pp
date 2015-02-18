@@ -25,7 +25,7 @@ class phpipam (
   $ssl_ca_certs           = false,
   $ssl_chain_certs        = false,
   $ssl_enabled            = false,
-  $enable_pingcheck_cron  = false,
+  $enable_pingcheck_cron  = true,
   $ssl_options            = {},
 ) inherits phpipam::params {
 
