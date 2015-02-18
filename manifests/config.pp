@@ -4,6 +4,10 @@
 #
 class phpipam::config {
 
+  if $caller_module_name != $module_name {
+    fail("Use of private class ${name} by ${caller_module_name}")
+  }
+
   if $::phpipam::manage_apache {
       $ssl_config = deep_merge($::phpipam::params::ssl_params_hash, $::phpipam::ssl_options)
 

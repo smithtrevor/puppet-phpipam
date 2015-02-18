@@ -2,6 +2,10 @@
 #
 class phpipam::install {
 
+  if $caller_module_name != $module_name {
+    fail("Use of private class ${name} by ${caller_module_name}")
+  }
+
   $phpipam_docroot = "${::phpipam::apache_docroot}/phpipam"
   
   if $::phpipam::manage_apache {
