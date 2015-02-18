@@ -37,6 +37,7 @@ class phpipam::params {
                           'php-mcrypt',
                           'php-ldap'
       ]
+      $php_path = '/usr/bin/php'
     }
     default: {
       fail("${::operatingsystem} not supported")

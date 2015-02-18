@@ -122,7 +122,7 @@ class phpipam::config {
 
   cron { 'pingCheck.php':
     ensure  => $::phpipam::config::pingcheck_cron_ensure,
-    command => '/usr/bin/php /var/www/html/phpipam/functions/scripts/pingCheck.php',
+    command => "${::phpipam::params::php_path} ${::phpipam::apache_docroot}/phpipam/functions/scripts/pingCheck.php",
     minute  => '*/15',
     user    => 'root',
   }
