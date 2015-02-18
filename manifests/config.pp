@@ -124,6 +124,6 @@ class phpipam::config {
     ensure  => $::phpipam::config::pingcheck_cron_ensure,
     command => '/usr/bin/php /var/www/html/phpipam/functions/scripts/pingCheck.php',
     minute  => '*/15',
-    user    => 'apache',
+    user    => 'root',
   }
 }
