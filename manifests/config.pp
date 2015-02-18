@@ -113,8 +113,15 @@ class phpipam::config {
     }
   }
 
+  if $::phpipam::enable_pingcheck_cron {
+    $pingcheck_cron_ensure = present
+  }
+  else {
+    $pingcheck_cron_ensure = absent
+  }
+
   cron { 'pingCheck.php':
-    ensure  => present,
+    ensure  => $::phpipam::config::pingcheck_cron_ensure,
     command => '/usr/bin/php /var/www/html/phpipam/functions/scripts/pingCheck.php',
     minute  => '*/15',
     user    => 'apache',
