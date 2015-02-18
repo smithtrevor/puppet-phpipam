@@ -5,11 +5,11 @@
 class phpipam::config {
 
   if $::phpipam::manage_apache {
+      $ssl_config = deep_merge($::phpipam::params::ssl_params_hash, $::phpipam::ssl_options)
 
     if $::phpipam::ssl_enabled {
       $listen_port = 443
 
-      $ssl_config = deep_merge($::phpipam::params::ssl_params_hash, $::phpipam::ssl_options)
 
       if $::phpipam::ssl_certificate {
 
