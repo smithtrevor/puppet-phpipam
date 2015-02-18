@@ -31,11 +31,20 @@ class phpipam (
 
   if $::osfamily == 'Redhat' {
   # validate parameters here
-  validate_absolute_path($apache_docroot)
+  validate_absolute_path( $apache_docroot,
+                          $apache_server_root,
+  )
   validate_string($apache_user,
-                  $apache_group
+                  $apache_group,
+                  $apache_serveradmin,
+                  $php_timezone,
   )
   validate_hash($ssl_options)
+  validate_bool(  $manage_apache,
+                  $manage_php,
+                  $manage_mysql,
+                  $enable_pingcheck_cron,
+  )
 
   class { 'phpipam::install': } ->
   class { 'phpipam::config': } ~>
