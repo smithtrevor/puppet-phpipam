@@ -1,4 +1,7 @@
 class phpipam::install::apache {
+  if $caller_module_name != 'phpipam::install' {
+    fail("Use of private class ${name} by ${caller_module_name}")
+  }
   
   class { '::apache':
     default_vhost          => false,
