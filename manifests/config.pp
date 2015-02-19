@@ -14,6 +14,27 @@ class phpipam::config {
     if $::phpipam::ssl_enabled {
       $listen_port = 443
 
+      apache::vhost { 'phpipam-http-redirect':
+        ip                => '*',
+        port              => '80',
+        servername        => $::phpipam::site_fqdn,
+        ssl               => false,
+        ip_based          => false,
+        access_log_format => 'combined',
+        docroot           => $phpipam::apache_docroot,
+        directories       => [
+          {
+            path           => '/',
+            rewrites       => [
+              {
+                rewrite_cond => ['%{HTTPS} !=on'],
+                rewrite_rule => ['(.*) https://%{HTTP_HOST}%{REQUEST_URI}'],
+              }
+            ],
+          }
+        ],
+      }
+
 
       if $::phpipam::ssl_certificate {
 
@@ -30,7 +51,7 @@ class phpipam::config {
       }
 
       if $::phpipam::ssl_key {
-        
+
         validate_absolute_path($::phpipam::config::ssl_config['ssl_key'])
 
         file { $::phpipam::config::ssl_config['ssl_key']:
