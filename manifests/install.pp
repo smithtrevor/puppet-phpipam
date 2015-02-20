@@ -23,7 +23,7 @@ class phpipam::install {
   }
 
   class { 'staging':
-    path  => '/tmp',
+    path  => '/tmp/staging',
     owner => 'puppet',
     group => 'puppet',
   }
