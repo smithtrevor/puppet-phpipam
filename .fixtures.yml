@@ -4,5 +4,8 @@ fixtures:
     staging: "git://github.com/nanliu/puppet-staging.git"
     mysql: "git://github.com/puppetlabs/puppetlabs-mysql.git"
     apache: "git://github.com/puppetlabs/puppetlabs-apache.git"
+    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    concat: "git://github.com/puppetlabs/puppetlabs-concat.git"
+    inifile: "git://github.com/puppetlabs/puppetlabs-inifile.git"
   symlinks:
     phpipam: "#{source_dir}"
