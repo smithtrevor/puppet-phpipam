@@ -35,7 +35,8 @@ class phpipam::params {
                           'php-pear-MDB2-Driver-mysqli',
                           'php-cli',
                           'php-mcrypt',
-                          'php-ldap'
+                          'php-ldap',
+                          'php-gd'
       ]
       $php_path = '/usr/bin/php'
     }
