@@ -24,8 +24,8 @@ class phpipam::config {
         docroot           => $phpipam::apache_docroot,
         directories       => [
           {
-            path           => '/',
-            rewrites       => [
+            path     => '/',
+            rewrites => [
               {
                 rewrite_cond => ['%{HTTPS} !=on'],
                 rewrite_rule => ['(.*) https://%{HTTP_HOST}%{REQUEST_URI}'],
