@@ -125,9 +125,6 @@ class phpipam::config {
     }
   }
 
-  if $::phpipam::manage_mysql {
-  }
-
   if $::phpipam::manage_php {
     ini_setting { 'php_timezone':
       ensure  => present,
