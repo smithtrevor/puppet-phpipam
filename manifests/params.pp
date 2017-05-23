@@ -36,7 +36,7 @@ class phpipam::params {
                           'php-cli',
                           'php-mcrypt',
                           'php-ldap',
-                          'php-gd'
+                          'php-gd',
       ]
       $php_path = '/usr/bin/php'
     }

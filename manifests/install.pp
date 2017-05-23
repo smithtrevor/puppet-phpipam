@@ -7,13 +7,13 @@ class phpipam::install {
   }
 
   $phpipam_docroot = "${::phpipam::apache_docroot}/phpipam"
-  
+
   if $::phpipam::manage_apache {
-    contain phpipam::install::apache
+    contain ::phpipam::install::apache
   }
 
   if $::phpipam::manage_mysql {
-    contain phpipam::install::mysql
+    contain ::phpipam::install::mysql
   }
 
   if $::phpipam::manage_php {
@@ -22,7 +22,7 @@ class phpipam::install {
     }
   }
 
-  class { 'staging':
+  class { '::staging':
     path  => '/tmp/staging',
     owner => 'puppet',
     group => 'puppet',
@@ -44,7 +44,7 @@ class phpipam::install {
     group     => $::phpipam::apache_group,
     mode      => '0640',
     recurse   => true,
-    subscribe => Staging::Extract[ 'phpipam.tar'],
+    subscribe => Staging::Extract['phpipam.tar'],
   }
 
   file { $::phpipam::apache_docroot:

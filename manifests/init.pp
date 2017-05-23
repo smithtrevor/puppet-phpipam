@@ -4,6 +4,7 @@
 #
 #
 class phpipam (
+  # lint:ignore:140chars
   $apache_docroot         = $::phpipam::params::apache_docroot,         # document root for apache this is the parent directory to the phpipam docroot
   $apache_user            = $::phpipam::params::apache_user,            # user account under which the httpd processes run
   $apache_group           = $::phpipam::params::apache_group,           # group account for the apache_user
@@ -23,6 +24,7 @@ class phpipam (
   $ssl_enabled            = false,                                      # boolean that when true sets the site to run under https
   $enable_pingcheck_cron  = true,                                       # boolean that adds the pingCheck.php cronjob to the root user
   $ssl_options            = {},                                         # hash of that allows overrides of the default ssl settings, see params.pp
+  # lint:endignore
 ) inherits phpipam::params {
 
   if $::osfamily == 'Redhat' {
@@ -42,10 +44,10 @@ class phpipam (
                   $enable_pingcheck_cron,
   )
 
-  class { 'phpipam::install': } ->
-  class { 'phpipam::config': } ~>
-  class { 'phpipam::service': } ->
-  Class['phpipam']
+  class { '::phpipam::install': }
+  -> class { '::phpipam::config': }
+  ~> class { '::phpipam::service': }
+  -> Class['phpipam']
 
   }
   else {

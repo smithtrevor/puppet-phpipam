@@ -1,3 +1,4 @@
+# install mysql-server
 class phpipam::install::mysql {
 
     if $caller_module_name != $module_name {

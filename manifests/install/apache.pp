@@ -1,8 +1,9 @@
+# install apache and php
 class phpipam::install::apache {
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
-  
+
   class { '::apache':
     default_vhost          => false,
     server_tokens          => 'ProductOnly',
@@ -17,7 +18,7 @@ class phpipam::install::apache {
     vhost_dir              => '/etc/httpd/vhosts.d',
   }
 
-  class { '::apache::mod::prefork': } ->
-  class { '::apache::mod::php': }
+  class { '::apache::mod::prefork': }
+  -> class { '::apache::mod::php': }
 
 }

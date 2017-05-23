@@ -65,9 +65,9 @@ class phpipam::config {
       }
 
       if $::phpipam::ssl_ca_certs {
-        
+
         validate_absolute_path($::phpipam::config::ssl_config['ssl_ca'])
-        
+
         file { $::phpipam::config::ssl_config['ssl_ca']:
           ensure  => file,
           owner   => 'root',
@@ -131,7 +131,7 @@ class phpipam::config {
       path    => '/etc/php.ini',
       section => 'Date',
       setting => 'date.timezone',
-      value   => $::phpipam::php_timezone
+      value   => $::phpipam::php_timezone,
     }
   }
 
