@@ -8,14 +8,32 @@ class phpipam::params {
 
   $apache_serveradmin = "root@${::fqdn}"
 
+  if defined(Class['Apache']) {
+    $ssl_cert      = $::apache::default_ssl_cert
+    $ssl_key       = $::apache::default_ssl_key
+    $ssl_chain     = $::apache::default_ssl_chain
+    $ssl_ca        = $::apache::default_ssl_ca
+    $ssl_crl_path  = $::apache::default_ssl_crl_path
+    $ssl_crl       = $::apache::default_ssl_crl
+    $ssl_certs_dir = $::apache::params::ssl_certs_dir
+  } else {
+    $ssl_cert      = undef
+    $ssl_key       = undef
+    $ssl_chain     = undef
+    $ssl_ca        = undef
+    $ssl_crl_path  = undef
+    $ssl_crl       = undef
+    $ssl_certs_dir = undef
+  }
+
   $ssl_params_hash = {
-    'ssl_cert'             => $::apache::default_ssl_cert,
-    'ssl_key'              => $::apache::default_ssl_key,
-    'ssl_chain'            => $::apache::default_ssl_chain,
-    'ssl_ca'               => $::apache::default_ssl_ca,
-    'ssl_crl_path'         => $::apache::default_ssl_crl_path,
-    'ssl_crl'              => $::apache::default_ssl_crl,
-    'ssl_certs_dir'        => $::apache::params::ssl_certs_dir,
+    'ssl_cert'             => $ssl_cert,
+    'ssl_key'              => $ssl_key,
+    'ssl_chain'            => $ssl_chain,
+    'ssl_ca'               => $ssl_ca,
+    'ssl_crl_path'         => $ssl_crl_path,
+    'ssl_crl'              => $ssl_crl,
+    'ssl_certs_dir'        => $ssl_certs_dir,
     'ssl_protocol'         => undef,
     'ssl_cipher'           => undef,
     'ssl_honorcipherorder' => undef,
